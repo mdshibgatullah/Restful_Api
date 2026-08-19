@@ -1,7 +1,9 @@
 import react from 'react'
 
-import Header from './components/Header'
-import Product from './components/Product'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Edit from './components/Edit'
+import Create from './components/Create'
+import Home from './components/Home'
 
 function App() {
 
@@ -9,9 +11,16 @@ function App() {
   return (
     <>
 
-    <Header />
+    
+    
 
-    <Product />
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element = {<Home />}/>
+      <Route path='/edit' element = {<Edit />}/>
+      <Route path='/create' element = {<Create />}/>
+    </Routes>
+    </BrowserRouter>
 
 
     </>

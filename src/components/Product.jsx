@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Table } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 const Product = () => {
     const [products, setProducts] = useState([])
+    const navigate = useNavigate()
 
     const fectProducts = async ()=>{
         const res = await fetch(`http://127.0.0.1:8000/api/product/`, {
@@ -48,9 +50,10 @@ const Product = () => {
     }, [])
 
   return (
-    <section>
+    <section className='my-4'>
       <Container>
         <Row>
+            <button className='btn btn-primary mb-2' onClick={()=> navigate('/create')}>Product Create</button>
           <Table striped bordered hover>
             <thead>
                 <tr>
@@ -71,7 +74,7 @@ const Product = () => {
                         <td><img src={`http://127.0.0.1:8000/uploads/products/${product.image}`} width={70} alt="" /></td>
                         <td>{product.description}</td>
                         <td>
-                            <button className='btn btn-primary btn-sm me-2 '>Edit</button>
+                            <button className='btn btn-primary btn-sm me-2' onClick={()=> navigate(`/edit/${product.id}`)}>Edit</button>
                             <button className='btn btn-danger btn-sm' onClick={() => deleteProduct(product.id)}>Delete</button>
                         </td>
                     </tr>
