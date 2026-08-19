@@ -1,0 +1,85 @@
+:root{
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.nav-link li{
+  position: relative;
+}
+
+.nav-link li::before{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 40px;
+  background: aqua;
+  /* top: 0; */
+  left: 0;
+  bottom: -2px;
+}
+:root{
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.nav-link{
+  position: relative;
+}
+
+.nav-link li::before{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 40px;
+  background: aqua;
+  /* top: 0; */
+  left: 0;
+  bottom: -2px;
+}
+.nav-link li.active::before {
+  width: 40px;
+}
