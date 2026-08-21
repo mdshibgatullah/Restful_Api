@@ -1,53 +1,87 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
-import { Button, Container, Form } from 'react-bootstrap'
+import { Button, Container, Form, Row } from 'react-bootstrap'
 
 const Create = () => {
+
+  const [formData, seFormData] = useState({
+    title : '',
+    description: '',
+    image : ''
+  })
+
+  const handleChange = ()=>{
+    seFormData({
+      ...formData,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const handleSubmit = ()=>{
+    e.preventDefault();
+    console.log(formData);
+    alert('Form submitted')
+  }
+
+
+  const saveProduct = async ()=> {
+    const res = await fetch(`http://127.0.0.1:8000/api/product/`, {
+      method: 'POST',
+      headers: {
+        'content-type' : 'application/json',
+        'Accept' : 'application/json'
+      }
+    }).then(res = res.json())
+    .then(result=>{
+      if(result.status === 200){
+        alert("Product Created Successfully");
+      }
+    })
+
+  }
+
+
   return (
     <div>
         <Header />
 
-<Form>
-  <Form.Group className="mb-3">
-    <Form.Label>Name</Form.Label>
-    <Form.Control type="text" placeholder="Enter your name" />
-  </Form.Group>
 
-  <Form.Group className="mb-3">
-    <Form.Label>Email</Form.Label>
-    <Form.Control type="email" placeholder="Enter your email" />
-  </Form.Group>
+        <Container>
+          <Row className='justify-content-center'>
+            <div className="col-md-6 mt-5">
+              <div className="card shadow">
+                <form action="" onSubmit={handleSubmit}>
+                  <div className="card-header bg-primary text-white">
+                    <h2>Create Product</h2>
+                  </div>
 
-  <Form.Group className="mb-3">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Enter your password" />
-  </Form.Group>
+                  <div className="card-body">
 
-  <Form.Group className="mb-3">
-    <Form.Label>Gender</Form.Label>
-    <Form.Select>
-      <option>Select Gender</option>
-      <option>Male</option>
-      <option>Female</option>
-      <option>Other</option>
-    </Form.Select>
-  </Form.Group>
+                    <div className='mb-3'>
+                      <label for="title" className='form-label'>Title</label>
+                      <input onChange={handleChange} value={formData.title}
+                       type="text" className='form-control' id='title' name='title' placeholder='enter title' required/>
+                    </div>
 
-  <Form.Group className="mb-3">
-    <Form.Label>Message</Form.Label>
-    <Form.Control as="textarea" rows={3} placeholder="Write your message" />
-  </Form.Group>
+                    <div className='mb-3'>
+                      <label for="description" className='form-label'>Description</label>
+                      <input onChange={handleChange} value={formData.description}
+                       type="description" className='form-control' id='description' name='description' placeholder='enter description' required/>
+                    </div>
 
-  <Form.Check
-    type="checkbox"
-    label="I agree to the terms and conditions"
-    className="mb-3"
-  />
+                    <div className='mb-3'>
+                      <label for="file" className='form-label'>File</label>
+                      <input onChange={handleChange} value={formData.file}
+                      type="file" className='form-control' id='file' name='file'/>
+                    </div>
 
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+                    <button type='submit' className='btn btn-primary w-100' >Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </Row>
+        </Container>
 
     </div>
   )
