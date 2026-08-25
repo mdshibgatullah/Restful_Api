@@ -43,7 +43,7 @@ const Product = () => {
 
         const result = await res.json()
 
-        if (res.ok && result.status === 200) {
+        if (result.status === 200) {
           setProducts(products.filter(product => product.id !== id))
           console.log('Deleted successfully')
         } else {

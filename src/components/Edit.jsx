@@ -103,7 +103,8 @@ const Edit = () => {
                       type="text" className="form-control" id="title" placeholder="Enter title"
                     />
                     {errors.title && (
-                      <span className="text-danger d-block mt-1"> {errors.title.message} </span> )}
+                      <span className="text-danger d-block mt-1"> {errors.title.message} </span> 
+                      )}
                   </div>
 
                   
