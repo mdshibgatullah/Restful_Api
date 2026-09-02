@@ -6,6 +6,7 @@ import Create from './components/Create'
 import SecondCreate from './components/Secondproduct/Create'
 import Home from './components/Home'
 import Login from './components/Admin/Login'
+import './App.css'
 
 function App() {
 

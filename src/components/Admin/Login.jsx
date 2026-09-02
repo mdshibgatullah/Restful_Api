@@ -27,7 +27,7 @@ const Login = () => {
                                         <input
                                             {...register('email', { required: 'Email is required' })}
                                             type="email" 
-                                            /* ১. is-invalid ক্লাস দিলে তবেই invalid-feedback ভিজিবল হবে */
+                                            
                                             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                             placeholder='enter email'
                                         />
