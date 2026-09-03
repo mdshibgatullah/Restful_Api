@@ -83,3 +83,27 @@ a{
 .nav-link li.active::before {
   width: 40px;
 }
+
+.burger{
+  display: none;
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@media(max-width: 860px){
+  .nav-link{
+    display: none !important;
+  }
+  .burger{
+    display: block;
+  }
+}
+
+@media(min-width: 861px){
+  
+}
+
+
+
