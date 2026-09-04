@@ -1,12 +1,32 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { apiUrl } from '../http'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = async (data) => {
+        try{
+            const res = await fetch(`${apiUrl}/admin/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'applicaton/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data),
+            })
+            const result = await res.json()
+            if(result.status === 200){
+                navigate('/')
+            }else{
+                console.log('Email or passwor is incorrect')
+            }
+        }catch{
+            console.log('Something went errors')
+        }
     }
 
     return (
@@ -21,7 +41,7 @@ const Login = () => {
                                 </div>
 
                                 <div className="card-body">
-                                    {/* Email Field */}
+                                    
                                     <div className="mb-3">
                                         <label htmlFor="email" className='form-label'>Email</label>
                                         <input

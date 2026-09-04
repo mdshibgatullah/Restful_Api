@@ -3,6 +3,7 @@ import Header from './Header'
 import { Container, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { apiUrl } from './http'
 
 const Create = () => {
   const navigate = useNavigate()
@@ -24,7 +25,7 @@ const Create = () => {
     }
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/product`, {
+      const res = await fetch(`${apiUrl}/product`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json' 

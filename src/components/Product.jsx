@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { apiUrl } from './http'
 
 const Product = () => {
   const [products, setProducts] = useState([])
@@ -33,7 +34,7 @@ const Product = () => {
   const deleteProduct = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/product/${id}`, {
+        const res = await fetch(`${apiUrl}/product/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

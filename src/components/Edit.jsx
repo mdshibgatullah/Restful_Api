@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Header from './Header'
 import { Container, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { apiUrl } from './http'
 
 const Edit = () => {
   const [product, setProduct] = useState(null)
@@ -55,7 +56,7 @@ const Edit = () => {
     formData.append('_method', 'PUT')
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/product/${id}`, {
+      const res = await fetch(`${apiUrl}/product/${id}`, {
         method: 'POST',
         headers: {
           Accept: 'application/json'
