@@ -7,16 +7,13 @@ import SecondCreate from './components/Secondproduct/Create'
 import Home from './components/Home'
 import Login from './components/Admin/Login'
 import './App.css'
+import Register from './components/Admin/Register'
 
 function App() {
 
 
   return (
     <>
-
-    
-    
-
     <BrowserRouter>
     <Routes>
       <Route path='/' element = {<Home />}/>
@@ -24,6 +21,7 @@ function App() {
       <Route path='/create' element = {<Create />}/>
 
       <Route path='/admin/login' element ={<Login />}/>
+      <Route path='/register' element ={<Register />}/>
 
 
       <Route path='/secondCreate' element = {<SecondCreate />}/>
